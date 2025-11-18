@@ -5,6 +5,7 @@ This repo contains the source code for the LeoTrace community challenges. You ca
 ## Index
 
 1. JSON Interoperability Vulnerability (Challenge created by [@warl0ckwraith](https://github.com/warl0ckwraith))
+2. Hidden Service (Challenge created by [@warl0ckwraith](https://github.com/warl0ckwraith))
 
 ## Want to Contribute?
 

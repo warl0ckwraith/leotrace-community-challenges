@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  grpc-server:
+    build: .
+    ports:
+      - "50051:50051"
+    volumes:
+      - ./server.py:/app/server.py
+      - ./protos:/app/protos
+    environment:
+      - PYTHONUNBUFFERED=1
+    stdin_open: true
+    tty: true
+
+  grpcurl:
+    image: fullstorydev/grpcurl:latest
+    network_mode: "host"
+    command: -plaintext localhost:50051 list
+    profiles:
+      - tools

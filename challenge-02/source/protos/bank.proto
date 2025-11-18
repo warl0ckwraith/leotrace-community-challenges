@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package bank;
+
+service BankingService {
+  rpc GetBalance(BalanceRequest) returns (BalanceResponse);
+  rpc Transfer(TransferRequest) returns (TransferResponse);
+}
+
+service AdminService {
+  rpc ListAllAccounts(Empty) returns (AccountList);
+  rpc GetUserSecrets(UserRequest) returns (SecretData);
+  rpc ExecuteCommand(CommandRequest) returns (CommandResponse);
+}
+
+message Empty {}
+
+message BalanceRequest {
+  string account_id = 1;
+}
+
+message BalanceResponse {
+  string account_id = 1;
+  double balance = 2;
+}
+
+message TransferRequest {
+  string from_account = 1;
+  string to_account = 2;
+  double amount = 3;
+}
+
+message TransferResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message UserRequest {
+  string username = 1;
+}
+
+message SecretData {
+  string username = 1;
+  string api_key = 2;
+  string internal_notes = 3;
+  string flag = 4;
+}
+
+message AccountList {
+  repeated string accounts = 1;
+}
+
+message CommandRequest {
+  string command = 1;
+}
+
+message CommandResponse {
+  string output = 1;
+}
